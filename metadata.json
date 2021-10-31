@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "defaultFile": "contracts/Enum.sol",
+  "environment": "solidity",
+  "setupCommands": ["npm i", "npx hardhat compile"],
+  "compileCommand": "npx hardhat compile",
+  "tests": [
+    { "itShould": "Compile", "command": "sh learn_tests/38.sh" },
+    { "itShould": "Call get", "command": "sh learn_tests/39.sh" },
+    { "itShould": "Call set", "command": "sh learn_tests/40.sh" },
+    { "itShould": "Call cancel", "command": "sh learn_tests/41.sh" },
+    { "itShould": "Call reset", "command": "sh learn_tests/42.sh" }
+  ],
+  "learnerAccessibleFileList": ["contracts/*"]
+}
