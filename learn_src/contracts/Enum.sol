@@ -22,21 +22,25 @@ contract Enum {
     // Rejected - 3
     // Canceled - 4
     function get() public view returns (Status) {
-        return status;
+        //write logic to get the status value
+        
     }
 
     // Update status by passing uint into input
     function set(Status _status) public {
-        status = _status;
+        //write logic to set the status value
+        
     }
 
     // You can update to a specific enum like this
     function cancel() public {
-        status = Status.Canceled;
+        //write logic to set the status value to Canceled
+        
     }
 
     // delete resets the enum to its first value, 0
     function reset() public {
-        delete status;
+        // write logic to reset the status value to Pending
+        
     }
 }
