@@ -7,14 +7,10 @@ Enums can be declared outside of a contract.
 Enums bounds a variable to have one of only a few predefined values.  
 This reduces the number of bugs in your code.
 
-In this below example, Status enum is defined to have only five statuses.
+Let's create an Enum representing shipping status.
+It will have only five statuses.
 
 ```
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.3;
-
-contract Enum {
-    // Enum representing shipping status
     enum Status {
         Pending,
         Shipped,
@@ -22,64 +18,69 @@ contract Enum {
         Rejected,
         Canceled
     }
+```
 
-    // Default value is the first element listed in
-    // definition of the type, in this case "Pending"
-    Status public status;
+Create a public variable called `status` having `Status` as type.
 
-    // Returns uint
-    // Pending  - 0
-    // Shipped  - 1
-    // Accepted - 2
-    // Rejected - 3
-    // Canceled - 4
+```
+Status public status;
+```
+
+- The default value is the first value in the enum definition. In this case `Pending`.
+
+## Getting the value of an enum
+
+Let's write a function that returns the value of the enum.
+This function returns a uint corresponding to the enum value.
+
+- Pending - 0
+- Shipped - 1
+- Accepted - 2
+- Rejected - 3
+- Canceled - 4
+
+```
     function get() public view returns (Status) {
         return status;
     }
+```
 
-    // Update status by passing uint into input
+Hit `Run`. You should see the returned value 0 because the default value is `Pending`.
+
+## Setting the value of an enum
+
+Now let's write a function that sets the value of the enum.
+
+```
     function set(Status _status) public {
         status = _status;
     }
+```
 
-    // You can update to a specific enum like this
+Hit `Run`. After `set(3)` is called, the value of `status` should be `Rejected`. But we should see the returned value `3`.
+
+## Update to a specific enum value
+
+Let's write a function to update the value of the enum to `Canceled`.
+
+```
     function cancel() public {
         status = Status.Canceled;
     }
+```
 
-    // delete resets the enum to its first value, 0
+Hit `Run`. After `cancel()` is called, the value of `status` should be `Canceled`. But we should see the returned value `4`.
+
+## Resetting the value of an enum
+
+Let's write a function to reset the value of the enum to default value.
+
+- `delete` resets the value to the first value in the enum definition. In this case `Pending`.
+
+```
     function reset() public {
         delete status;
     }
-}
 ```
 
-### Declaring and importing Enum
-
-File that the enum is declared in
-
-```
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.3;
-
-enum Status {
-    Pending,
-    Shipped,
-    Accepted,
-    Rejected,
-    Canceled
-}
-```
-
-File that imports the enum above
-
-```
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.3;
-
-import "./EnumDeclaration.sol";
-
-contract Enum {
-    Status public status;
-}
-```
+Hit `Run`. After `reset()` is called, the value of `status` should be `Pending`. But we should see the returned value `0`.
